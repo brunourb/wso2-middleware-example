@@ -9,6 +9,94 @@
     <version>1.0.0-SNAPSHOT</version>
     <packaging>war</packaging>
 
+    <repositories>
+        <!-- Below configuration is used to download the relevant jars and plugins from the remote maven repositories -->
+        <repository>
+            <id>wso2-nexus</id>
+            <name>WSO2 internal Repository</name>
+            <url>http://maven.wso2.org/nexus/content/groups/wso2-public/</url>
+            <releases>
+                <enabled>true</enabled>
+                <updatePolicy>daily</updatePolicy>
+                <checksumPolicy>ignore</checksumPolicy>
+            </releases>
+        </repository>
+
+        <repository>
+            <id>wso2.releases</id>
+            <name>WSO2 internal Repository</name>
+            <url>http://maven.wso2.org/nexus/content/repositories/releases/</url>
+            <releases>
+                <enabled>true</enabled>
+                <updatePolicy>daily</updatePolicy>
+                <checksumPolicy>ignore</checksumPolicy>
+            </releases>
+        </repository>
+
+        <repository>
+            <id>wso2.snapshots</id>
+            <name>WSO2 Snapshot Repository</name>
+            <url>http://maven.wso2.org/nexus/content/repositories/snapshots/</url>
+            <snapshots>
+                <enabled>true</enabled>
+                <updatePolicy>daily</updatePolicy>
+            </snapshots>
+            <releases>
+                <enabled>false</enabled>
+            </releases>
+        </repository>
+
+        <repository>
+            <id>dist wso2</id>
+            <name>dist WSO2 Repository</name>
+            <url>https://dist.wso2.org/maven2/</url>
+            <snapshots>
+                <enabled>true</enabled>
+                <updatePolicy>daily</updatePolicy>
+            </snapshots>
+            <releases>
+                <enabled>false</enabled>
+            </releases>
+        </repository>
+    </repositories>
+
+    <pluginRepositories>
+        <pluginRepository>
+            <id>wso2.releases</id>
+            <name>WSO2 internal Repository</name>
+            <url>http://maven.wso2.org/nexus/content/repositories/releases/</url>
+            <releases>
+                <enabled>true</enabled>
+                <updatePolicy>daily</updatePolicy>
+                <checksumPolicy>ignore</checksumPolicy>
+            </releases>
+        </pluginRepository>
+
+        <pluginRepository>
+            <id>wso2.snapshots</id>
+            <name>WSO2 Snapshot Repository</name>
+            <url>http://maven.wso2.org/nexus/content/repositories/snapshots/</url>
+            <snapshots>
+                <enabled>true</enabled>
+                <updatePolicy>daily</updatePolicy>
+            </snapshots>
+            <releases>
+                <enabled>false</enabled>
+            </releases>
+        </pluginRepository>
+        <pluginRepository>
+            <id>wso2-nexus</id>
+            <name>WSO2 internal Repository</name>
+            <url>http://maven.wso2.org/nexus/content/groups/wso2-public/</url>
+            <releases>
+                <enabled>true</enabled>
+                <updatePolicy>daily</updatePolicy>
+                <checksumPolicy>ignore</checksumPolicy>
+            </releases>
+        </pluginRepository>
+    </pluginRepositories>
+
+    <name>wso2</name>
     <description>WSO2 middleware practice study</description>
 
     <organization>
@@ -47,21 +135,8 @@
         </license>
     </licenses>
 
-    <repositories>
-        <repository>
-            <id>wso2</id>
-            <name>WSO2 public</name>
-            <url>https://maven.wso2.org/nexus/content/repositories/public/</url>
-        </repository>
-        <repository>
-            <id>axis2</id>
-            <name>wso axis2</name>
-            <url>https://maven.wso2.org/nexus/content/repositories/releases/</url>
-        </repository>
-    </repositories>
-
     <build>
-        <finalName>wso2-middleware</finalName>
+        <finalName>wso2</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -94,6 +169,10 @@
         <servlet.api.version>2.5</servlet.api.version>
         <junit.version>3.8.1</junit.version>
         <maven.war.plugin.version>3.2.3</maven.war.plugin.version>
+        <wsdl4j.version>1.6.3</wsdl4j.version>
+        <apache.ws.schema.version>1.4.7</apache.ws.schema.version>
+        <apache.neethi.version>3.1.1</apache.neethi.version>
+        <wso2carbon.version>4.2.0</wso2carbon.version>
     </properties>
 
     <dependencies>
@@ -112,12 +191,132 @@
             <version>${axion.wso2.version}</version>
         </dependency>
 
+        <!-- https://mvnrepository.com/artifact/org.apache.neethi/neethi -->
+        <dependency>
+            <groupId>org.apache.neethi</groupId>
+            <artifactId>neethi</artifactId>
+            <version>${apache.neethi.version}</version>
+        </dependency>
+
+
         <!-- https://mvnrepository.com/artifact/org.apache.ws.commons.axiom/axiom-api -->
         <dependency>
             <groupId>org.apache.ws.commons.axiom</groupId>
             <artifactId>axiom-api</artifactId>
             <version>${axion.version}</version>
         </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.apache.ws.commons.axiom/axiom-impl -->
+        <dependency>
+            <groupId>org.apache.ws.commons.axiom</groupId>
+            <artifactId>axiom-impl</artifactId>
+            <version>${axion.version}</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/wsdl4j/wsdl4j -->
+        <dependency>
+            <groupId>wsdl4j</groupId>
+            <artifactId>wsdl4j</artifactId>
+            <version>${wsdl4j.version}</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.apache.ws.commons.schema/XmlSchema -->
+        <dependency>
+            <groupId>org.apache.ws.commons.schema</groupId>
+            <artifactId>XmlSchema</artifactId>
+            <version>${apache.ws.schema.version}</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/commons-httpclient/commons-httpclient -->
+        <dependency>
+            <groupId>commons-httpclient</groupId>
+            <artifactId>commons-httpclient</artifactId>
+            <version>3.1</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/javax.mail/mail -->
+        <dependency>
+            <groupId>javax.mail</groupId>
+            <artifactId>mail</artifactId>
+            <version>1.5.0-b01</version>
+        </dependency>
+
+
+
+        <!-- WSO2 -->
+
+        <!-- https://mvnrepository.com/artifact/org.wso2.securevault/org.wso2.securevault -->
+        <dependency>
+            <groupId>org.wso2.securevault</groupId>
+            <artifactId>org.wso2.securevault</artifactId>
+            <version>1.1.1</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.wso2.carbon/org.wso2.carbon.um.ws.api.stub -->
+        <dependency>
+            <groupId>org.wso2.carbon</groupId>
+            <artifactId>org.wso2.carbon.um.ws.api.stub</artifactId>
+            <version>4.2.2</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/commons-httpclient.wso2/commons-httpclient -->
+        <dependency>
+            <groupId>commons-httpclient.wso2</groupId>
+            <artifactId>commons-httpclient</artifactId>
+            <version>3.1.0.wso2v2</version>
+        </dependency>
+
+
+
+
+        <!--        <dependency>-->
+<!--            <groupId>org.wso2.carbon</groupId>-->
+<!--            <artifactId>carbon-components</artifactId>-->
+<!--            <version>4.2.0</version>-->
+<!--        </dependency>-->
+<!--        <dependency>-->
+<!--            <groupId>org.wso2.carbon</groupId>-->
+<!--            <artifactId>org.wso2.carbon.bam.agent</artifactId>-->
+<!--            <version>3.2.4</version>-->
+<!--        </dependency>-->
+<!--        &lt;!&ndash; https://mvnrepository.com/artifact/org.wso2.carbon/org.wso2.carbon.bam.data.publisher.util &ndash;&gt;-->
+<!--        <dependency>-->
+<!--            <groupId>org.wso2.carbon</groupId>-->
+<!--            <artifactId>org.wso2.carbon.bam.data.publisher.util</artifactId>-->
+<!--            <version>4.2.1</version>-->
+<!--        </dependency>-->
+
+<!--        &lt;!&ndash; https://mvnrepository.com/artifact/org.wso2.carbon/org.wso2.carbon.databridge.agent.thrift &ndash;&gt;-->
+<!--        <dependency>-->
+<!--            <groupId>org.wso2.carbon</groupId>-->
+<!--            <artifactId>org.wso2.carbon.databridge.agent.thrift</artifactId>-->
+<!--            <version>4.2.4</version>-->
+<!--        </dependency>-->
+
+<!--        <dependency>-->
+<!--            <groupId>org.wso2.carbon</groupId>-->
+<!--            <artifactId>org.wso2.carbon.bam.service</artifactId>-->
+<!--            <version>3.2.1</version>-->
+<!--        </dependency>-->
+        <dependency>
+            <groupId>com.google.common.wso2</groupId>
+            <artifactId>google-collect</artifactId>
+            <version>1.0.0.wso2v2</version>
+        </dependency>
+        <dependency>
+            <groupId>libthrift.wso2</groupId>
+            <artifactId>libthrift</artifactId>
+            <version>0.5.wso2v1</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-pool.wso2</groupId>
+            <artifactId>commons-pool</artifactId>
+            <version>1.5.0.wso2v1</version>
+        </dependency>
+
+
+        <!-- WSO2 -->
+
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>

@@ -46,6 +46,7 @@ docker run -itd -p 8280:8280 -p 8243:8243 -p 9443:9443 --name api-manager -h api
   
   
   # References
+  * http://svn.wso2.org/repos/wso2/carbon/kernel/branches/4.2.0/samples/student-manager/
   * https://wso2.com/library/articles/2015/02/how-to-write-a-web-application-backed-by-wso2-middleware-part-1/
   * https://wso2.com/library/articles/2015/02/how-to-write-a-web-application-backed-by-wso2-middleware-part-2/
   * https://wso2.com/library/articles/2015/02/how-to-write-a-web-application-backed-by-wso2-middleware-part-3/

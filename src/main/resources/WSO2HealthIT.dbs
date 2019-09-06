@@ -1,9 +1,11 @@
 <data name="WSO2HealthIT" serviceNamespace="http://ws.wso2.org/dataservice/samples/health">
    <config id="HealthDataSource">
-      <property name="driverClassName">com.mysql.jdbc.Driver</property>
-      <property name="url">jdbc:mysql://localhost:3306/patientdb</property>
-      <property name="username">root</property>
-      <property name="password">root</property>
+      <!--property name="driverClassName">com.mysql.jdbc.Driver</property>
+      <property name="url">jdbc:mysql://localhost:3306/patientdb</property-->
+      <property name="driverClassName">org.h2.Driver</property>
+      <property name="url">jdbc:h2:mem:patientdb;DB_CLOSE_DELAY=- 1;DB_CLOSE_ON_EXIT=FALSE</property>
+      <property name="username">sa</property>
+      <property name="password"></property>
    </config>
    <query id="registerPatientQuery" useConfig="HealthDataSource">
       <sql>insert into patient (patientNumber, patientLastName, patientFirstName, phone, city, streetname, country) values(:patientNumber,:patientLastName,:patientFirstName,:phone,:city,:streetname,:country)</sql>
