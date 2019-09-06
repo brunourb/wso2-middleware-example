@@ -71,6 +71,7 @@
         <axion.version>1.2.22</axion.version>
         <axion.wso2.version>1.6.2.wso2v13</axion.wso2.version>
         <servlet.api.version>2.5</servlet.api.version>
+        <junit.version>3.8.1</junit.version>
     </properties>
 
     <build>
@@ -120,6 +121,12 @@
             <artifactId>h2</artifactId>
             <version>${h2.version}</version>
             <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>${junit.version}</version>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 
