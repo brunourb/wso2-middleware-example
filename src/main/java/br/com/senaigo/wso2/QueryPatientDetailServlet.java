@@ -31,10 +31,8 @@ public class QueryPatientDetailServlet extends HttpServlet {
 
 	private OMElement createPayload(String patientNumber) {
 		OMFactory fac = OMAbstractFactory.getOMFactory();
-		OMNamespace omNs = fac.createOMNamespace(
-				nameSpaceURL, "ns");
-		OMElement patientDetailsByNumber = fac.createOMElement(
-				"patientDetailsByNumber", omNs);
+		OMNamespace omNs = fac.createOMNamespace(nameSpaceURL, "ns");
+		OMElement patientDetailsByNumber = fac.createOMElement("patientDetailsByNumber", omNs);
 		OMElement patientNo = fac.createOMElement("patientNumber", omNs);
 
 		patientNo.setText(patientNumber);
@@ -46,22 +44,16 @@ public class QueryPatientDetailServlet extends HttpServlet {
 
 	private List<Patient> parseResultFromDSS(OMElement response) {
 		List<Patient> patientList = new ArrayList<Patient>();
-		Iterator<OMElement> patientItr = response
-				.getChildrenWithName(new QName("patient"));
+		Iterator<OMElement> patientItr = response.getChildrenWithName(new QName("patient"));
+
 		while (patientItr.hasNext()) {
 			OMElement patientEle = patientItr.next();
-			String firstName = patientEle.getFirstChildWithName(
-					new QName(nameSpaceURL, "patient-first-name")).getText();
-			String lastName = patientEle.getFirstChildWithName(
-					new QName(nameSpaceURL, "patient-last-name")).getText();
-			String phone = patientEle.getFirstChildWithName(
-					new QName(nameSpaceURL, "phone")).getText();
-			String city = patientEle.getFirstChildWithName(
-					new QName(nameSpaceURL, "city")).getText();
-			String street = patientEle.getFirstChildWithName(
-					new QName(nameSpaceURL, "streetname")).getText();
-			String country = patientEle.getFirstChildWithName(
-					new QName(nameSpaceURL, "country")).getText();
+			String firstName = patientEle.getFirstChildWithName(new QName(nameSpaceURL, "patient-first-name")).getText();
+			String lastName = patientEle.getFirstChildWithName(new QName(nameSpaceURL, "patient-last-name")).getText();
+			String phone = patientEle.getFirstChildWithName(new QName(nameSpaceURL, "phone")).getText();
+			String city = patientEle.getFirstChildWithName(new QName(nameSpaceURL, "city")).getText();
+			String street = patientEle.getFirstChildWithName(new QName(nameSpaceURL, "streetname")).getText();
+			String country = patientEle.getFirstChildWithName(new QName(nameSpaceURL, "country")).getText();
 
 			Patient patient = Patient.builder()
 					.patientFirstName(firstName)
@@ -100,8 +92,7 @@ public class QueryPatientDetailServlet extends HttpServlet {
 			List patients = parseResultFromDSS(result);
 			request.setAttribute("patientList", patients);
 			request.setAttribute("patientNumber", patientNumber);
-			RequestDispatcher rd = getServletContext().getRequestDispatcher(
-					"/patientInfoPage.jsp");
+			RequestDispatcher rd = getServletContext().getRequestDispatcher("/patientInfoPage.jsp");
 			rd.forward(request, response);
 
 		} catch (Exception e) {
