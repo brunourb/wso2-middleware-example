@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>br.com.senaigo.fatesg</groupId>
+    <artifactId>wso2-middleware-example</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+
+    <description>WSO2 middleware practice study</description>
+
+    <organization>
+        <name>SENAI-FATESG</name>
+    </organization>
+
+    <developers>
+        <developer>
+            <id>brunourb</id>
+            <name>Bruno Urbano</name>
+            <email>brunourb@gmail.com</email>
+            <url>http://www.linkedin.com/in/brunourbano</url>
+            <organization>SENAI-FATESG</organization>
+            <organizationUrl>http://www.senaigo.com.br</organizationUrl>
+            <roles>
+                <role>architect</role>
+                <role>developer</role>
+            </roles>
+            <timezone>America/Sao_Paulo</timezone>
+            <properties>
+                <picUrl>https://goo.gl/qaw4YO</picUrl>
+            </properties>
+        </developer>
+    </developers>
+
+    <scm>
+        <connection>scm:git:git://github.com/brunourb/wso2-middleware-example.git</connection>
+        <developerConnection>scm:git:git@github.com:brunourb/wso2-middleware-example.git</developerConnection>
+        <url>https://github.com/brunourb/wso2-middleware-example.git</url>
+    </scm>
+
+    <licenses>
+        <license>
+            <url>http://www.opensource.org/licenses/MIT</url>
+            <name>MIT License</name>
+        </license>
+    </licenses>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <maven.compiler.source>${java.version}</maven.compiler.source>
+        <maven.compiler.target>${java.version}</maven.compiler.target>
+        <java.version>1.8</java.version>
+    </properties>
+
+
+</project>
