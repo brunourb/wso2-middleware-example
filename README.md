@@ -13,6 +13,13 @@ API Management	API Manager All In One, Analytics Dashboard, Analytics Worker, Id
 IAM	Identity Server, Analytics Dashboard, Analytics Worker
 Analytics and Stream Processing	Dashboard, Editor, Manager, Worker
 
+  # Steps of study 
+  | Technology | Status |
+  | ---  | --- |
+  | 1. JSP | Legacy Systems |
+  | 2. Spring Boot | Microservices |
+  | 3. Spring Cloud | Latest of microservices |
+
   # WSO2 Products
   | WSO2 Product | Supported product profiles |
   | ---  | --- |
