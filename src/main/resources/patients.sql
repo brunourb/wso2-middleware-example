@@ -1,8 +1,13 @@
 DROP DATABASE IF EXISTS medicaldb;
+DROP USER 'patient'@'localhost';
+DROP USER 'patient'@'%';
+
 CREATE DATABASE medicaldb;
 CREATE USER 'patient'@'localhost' IDENTIFIED BY 'wso2';
-GRANT ALL PRIVILEGES ON medicaldb.* TO 'patient'@'%';
+CREATE USER 'patient'@'%' IDENTIFIED BY 'wso2';
 GRANT ALL PRIVILEGES ON medicaldb.* TO 'patient'@'localhost';
+GRANT ALL PRIVILEGES ON medicaldb.* TO 'patient'@'%';
+
 USE medicaldb;
 DROP TABLE IF EXISTS patient;
 
