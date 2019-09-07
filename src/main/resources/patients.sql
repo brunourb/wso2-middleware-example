@@ -1,7 +1,7 @@
 DROP DATABASE IF EXISTS patientdb;
 CREATE DATABASE patientdb;
 GRANT ALL ON patientdb.* TO patientdb@'%' IDENTIFIED BY "patientdb";
-GRANT ALL ON patientdb.* TO patientdb@'localhost' IDENTIFIED BY "patientdb";
+GRANT ALL ON patientdb.* TO patientdb@'localhost' IDENTIFIED BY "wso2";
 
 USE patientdb;
 DROP TABLE IF EXISTS patientdb;

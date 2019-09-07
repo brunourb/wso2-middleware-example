@@ -1,0 +1,87 @@
+# Use root/example as user/password credentials
+version: '3.7'
+
+services:
+
+  #WSO2 Identity Server
+  wso2is:
+    container_name: wso2is
+    hostname: wso2is
+    image: wso2/wso2is:5.7.0-centos
+    restart: always
+    ports:
+      - 9090:9443
+
+  #WSO2 Data Services
+  wso2dss:
+    container_name: wso2dss
+    hostname: wso2dss
+    image: isim/wso2dss
+    volumes:
+      - type: bind
+        source: ${FOLDER_CONNECTORS}
+        target: /home/wso2carbon/wso2am-2.6.0/repository/components/lib/
+    restart: always
+    ports:
+      - 8990:8243
+      - 9091:9443
+
+  # wso2-api-manager
+  wso2am:
+    container_name: wso2am
+    hostname: wso2-api-manager
+    image: wso2/wso2am:2.6.0-centos
+#    volumes:
+#      - type: volume
+#        source: wso2am-config
+#        target: /home/wso2carbon/wso2-config-volume
+    restart: always
+    ports:
+      - 8991:8243
+      - 9092:9443
+
+  # WSO2 Enterprise Integrator
+  wso2ei:
+    container_name: wso2ei
+    hostname: wso2ei-integrator
+    image: wso2/wso2ei-integrator:6.4.0-centos
+#    volumes:
+#      - wso2is-artifact:/home/wso2carbon/wso2-artifact-volume
+#      - wso2is-config:/home/wso2carbon/wso2-config-volume
+#      - type: volume
+#        source: wso2is-artifact
+#        target: /home/wso2carbon/wso2-artifact-volume
+#      - type: volume
+#        source: wso2is-config
+#        target: /home/wso2carbon/wso2-config-volume
+    restart: always
+    ports:
+      - 8280:8280
+      - 8992:8243
+      - 9093:9443
+
+  db:
+    container_name: mysql-wso2
+    hostname: mysql-wso2
+    image: mysql
+    ports:
+      - 9306:3306
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: wso2
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8081:8080
+
+# volumes needs to be at the same indentation with services i.
+#volumes:
+#  wso2am-artifact:
+#  wso2am-config:
+#  wso2ei-artifact:
+#  wso2ei-config:
+#  wso2is-artifact:
+#  wso2is-config:
