@@ -21,11 +21,15 @@ Analytics and Stream Processing	Dashboard, Editor, Manager, Worker
   | IAM | Identity Server, Analytics Dashboard, Analytics Worker |
   | Analytics and Stream Processing | Dashboard, Editor, Manager, Worker
   
+  # WSO2 Stack
+  ```console
+  /usr/local/bin/docker-compose -up -d  
+  ```
+  
   # Dockerfile for WSO2 API Manager
-```console
-docker run -itd -p 8280:8280 -p 8243:8243 -p 9443:9443 --name api-manager -h api-manager wso2/wso2am:2.6.0
-
-```
+  ```console
+    docker run -itd -p 8280:8280 -p 8243:8243 -p 9443:9443 --name api-manager -h api-manager wso2/wso2am:2.6.0
+  ```
   
   # Access to WSO2 API Managment
     
@@ -38,7 +42,6 @@ docker run -itd -p 8280:8280 -p 8243:8243 -p 9443:9443 --name api-manager -h api
   WSO2 Identity Server, a part of the WSO2 Integration Agile Platform, is a uniquely flexible, open source IAM product optimized for identity federation and single sign-on (SSO) with comprehensive support for adaptive and strong authentication
   ```console
   docker run -itd -p 9443:9443 --name wso2-is -h wso2-is wso2/wso2is:5.7.0
-  
   ```
   Access to Carbon management console: https://localhost:9443/carbon
     
