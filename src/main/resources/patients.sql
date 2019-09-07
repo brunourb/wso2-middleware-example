@@ -1,10 +1,11 @@
-DROP DATABASE IF EXISTS patientdb;
-CREATE DATABASE patientdb;
-GRANT ALL ON patientdb.* TO patientdb@'%' IDENTIFIED BY "patientdb";
-GRANT ALL ON patientdb.* TO patientdb@'localhost' IDENTIFIED BY "wso2";
+DROP DATABASE IF EXISTS medicaldb;
+CREATE DATABASE medicaldb;
+CREATE USER 'patient'@'%' IDENTIFIED BY 'wso2';
+GRANT ALL ON patient.* TO medicaldb@'%' IDENTIFIED BY 'wso2';
+GRANT ALL ON patient.* TO medicaldb@'localhost' IDENTIFIED BY 'wso2';
 
-USE patientdb;
-DROP TABLE IF EXISTS patientdb;
+USE medicaldb;
+DROP TABLE IF EXISTS patient;
 CREATE TABLE patient(patientNumber INT, patientLastName VARCHAR(20), patientFirstName VARCHAR(20), phone VARCHAR(20), city VARCHAR(20), streetname VARCHAR(20), country VARCHAR(20));
 
 

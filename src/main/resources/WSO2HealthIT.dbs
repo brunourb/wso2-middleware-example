@@ -2,7 +2,7 @@
    <config id="HealthDataSource">
 
       <property name="driverClassName">com.mysql.jdbc.Driver</property>
-      <property name="url">jdbc:mysql://localhost:9306/patientdb</property>
+      <property name="url">jdbc:mysql://localhost:9306/medicaldb</property>
       <property name="username">root</property>
       <property name="password">wso2</property>
 
