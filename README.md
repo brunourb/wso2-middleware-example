@@ -42,6 +42,10 @@ docker run -itd -p 8280:8280 -p 8243:8243 -p 9443:9443 --name api-manager -h api
   ```
   Access to Carbon management console: https://localhost:9443/carbon
     
+  # WSO2 Data Services Server
+  Setting up the drivers:
+  * Copy it to the <PRODUCT_HOME>/repository/components/lib/ directory.
+  * Copy the JAR file only to <PRODUCT_HOME>/repository/components/lib. Files will be copied automatically to the dropins folder at the server startup.
   
   
   
