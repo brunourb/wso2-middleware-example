@@ -15,7 +15,7 @@ services:
   #WSO2 Data Services
   wso2dss:
     container_name: wso2dss
-    hostname: wso2dss
+    hostname: siga.sema.mt.gov.br
     image: isim/wso2dss:3.5.1
     volumes:
       - type: bind

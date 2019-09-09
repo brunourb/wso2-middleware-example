@@ -26,14 +26,14 @@ import java.util.List;
 public class QueryPatientDetailServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
-	private String dataServiceEP = "https://localhost:9445/services/WSO2HealthIT/";
+	private String dataServiceEP = "http://172.19.0.2:9763/services/wso2health/";
 	private String nameSpaceURL = "http://ws.wso2.org/dataservice/samples/health";
 
 	private OMElement createPayload(String patientNumber) {
 		OMFactory fac = OMAbstractFactory.getOMFactory();
 		OMNamespace omNs = fac.createOMNamespace(nameSpaceURL, "ns");
 		OMElement patientDetailsByNumber = fac.createOMElement("patientDetailsByNumber", omNs);
-		OMElement patientNo = fac.createOMElement("patientNumber", omNs);
+		OMElement patientNo = fac.createOMElement("number", omNs);
 
 		patientNo.setText(patientNumber);
 
@@ -52,15 +52,15 @@ public class QueryPatientDetailServlet extends HttpServlet {
 			String lastName = patientEle.getFirstChildWithName(new QName(nameSpaceURL, "patient-last-name")).getText();
 			String phone = patientEle.getFirstChildWithName(new QName(nameSpaceURL, "phone")).getText();
 			String city = patientEle.getFirstChildWithName(new QName(nameSpaceURL, "city")).getText();
-			String street = patientEle.getFirstChildWithName(new QName(nameSpaceURL, "streetname")).getText();
+			String street = patientEle.getFirstChildWithName(new QName(nameSpaceURL, "street")).getText();
 			String country = patientEle.getFirstChildWithName(new QName(nameSpaceURL, "country")).getText();
 
 			Patient patient = Patient.builder()
-					.patientFirstName(firstName)
-					.patientLastName(lastName)
+					.firstName(firstName)
+					.lastName(lastName)
 					.phone(phone)
 					.city(city)
-					.streetname(street)
+					.street(street)
 					.country(country)
 					.build();
 
@@ -91,7 +91,7 @@ public class QueryPatientDetailServlet extends HttpServlet {
 			result = serviceclient.sendReceive(payload);
 			List patients = parseResultFromDSS(result);
 			request.setAttribute("patientList", patients);
-			request.setAttribute("patientNumber", patientNumber);
+			request.setAttribute("number", patientNumber);
 			RequestDispatcher rd = getServletContext().getRequestDispatcher("/patientInfoPage.jsp");
 			rd.forward(request, response);
 

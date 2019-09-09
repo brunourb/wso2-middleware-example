@@ -21,19 +21,19 @@ import java.io.PrintWriter;
 public class RegisterPatientServlet extends HttpServlet{
 
 	private static final long serialVersionUID = 1L;
-	private String DSSServerURL = "https://localhost:9445/services/WSO2HealthIT/";
+	private String DSSServerURL = "http://172.19.0.2:9763/services/wso2health/";
 	private static String nameSpaceURL = "http://ws.wso2.org/dataservice/samples/health";
 	
-	public static OMElement createPayload(String patientNumber, String patientLastName, String patientFirstName, String phone, String city, String streetname, String country){
+	public static OMElement createPayload(String patientNumber, String patientLastName, String patientFirstName, String phone, String city, String street, String country){
         OMFactory fac = OMAbstractFactory.getOMFactory();
         OMNamespace omNs = fac.createOMNamespace(nameSpaceURL, "ns");
         OMElement registerPatientQuery = fac.createOMElement("registerPatient", omNs);
-        OMElement patientNo = fac.createOMElement("patientNumber", omNs);
-        OMElement patientLName = fac.createOMElement("patientLastName", omNs);
-        OMElement patientFName = fac.createOMElement("patientFirstName", omNs);
+        OMElement patientNo = fac.createOMElement("number", omNs);
+        OMElement patientLName = fac.createOMElement("last_name", omNs);
+        OMElement patientFName = fac.createOMElement("first_name", omNs);
         OMElement patientPhone = fac.createOMElement("phone", omNs);
         OMElement patientCity = fac.createOMElement("city", omNs);
-        OMElement patientStreet = fac.createOMElement("streetname", omNs);
+        OMElement patientStreet = fac.createOMElement("street", omNs);
         OMElement patientCountry = fac.createOMElement("country", omNs);
 
         patientNo.setText(patientNumber);
@@ -41,7 +41,7 @@ public class RegisterPatientServlet extends HttpServlet{
         patientFName.setText(patientFirstName);
         patientPhone.setText(phone);
         patientCity.setText(city);
-        patientStreet.setText(streetname);
+        patientStreet.setText(street);
         patientCountry.setText(country);
 
 
@@ -104,10 +104,10 @@ public class RegisterPatientServlet extends HttpServlet{
             String patientFirstName = request.getParameter("patientFirstName");
             String phone = request.getParameter("phone");
             String city = request.getParameter("city");
-            String streetname = request.getParameter("streetname");
+            String street = request.getParameter("street");
             String country = request.getParameter("country");
 
-            OMElement payload = createPayload(patientNumber,patientLastName,patientFirstName,phone,city,streetname,country);
+            OMElement payload = createPayload(patientNumber,patientLastName,patientFirstName,phone,city,street,country);
             OMElement result=null;
             ServiceClient serviceclient;
 

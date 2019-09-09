@@ -53,7 +53,7 @@ pageEncoding="ISO-8859-1"%>
     <tr>
         <td>Street name</td>
         <td>:</td>
-        <td><input type="text" name="streetname" size="20"></td>
+        <td><input type="text" name="street" size="20"></td>
     </tr>
     <tr>
         <td>Country</td>

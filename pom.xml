@@ -173,6 +173,7 @@
         <apache.ws.schema.version>1.4.7</apache.ws.schema.version>
         <apache.neethi.version>3.1.1</apache.neethi.version>
         <wso2carbon.version>4.2.0</wso2carbon.version>
+        <jstl.version>1.2</jstl.version>
     </properties>
 
     <dependencies>
@@ -241,7 +242,11 @@
             <version>1.5.0-b01</version>
         </dependency>
 
-
+        <dependency>
+            <groupId>jstl</groupId>
+            <artifactId>jstl</artifactId>
+            <version>${jstl.version}</version>
+        </dependency>
 
         <!-- WSO2 -->
 

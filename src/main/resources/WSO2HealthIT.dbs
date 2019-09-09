@@ -1,8 +1,8 @@
-<data name="WSO2HealthIT" serviceNamespace="http://ws.wso2.org/dataservice/samples/health">
-   <config id="HealthDataSource">
+<data name="wso2health" serviceNamespace="http://ws.wso2.org/dataservice/samples/health">
+   <config id="healthdatasource">
 
       <property name="driverClassName">com.mysql.jdbc.Driver</property>
-      <property name="url">jdbc:mysql://localhost:9306/medicaldb</property>
+      <property name="url">jdbc:mysql://172.19.0.1:9306/medicaldb?autoReconnect=true&amp;useSSL=false</property>
       <property name="username">root</property>
       <property name="password">wso2</property>
 
@@ -12,42 +12,42 @@
       <property name="password"></property-->
 
    </config>
-   <query id="registerPatientQuery" useConfig="HealthDataSource">
-      <sql>insert into patient (patientNumber, patientLastName, patientFirstName, phone, city, streetname, country) values(:patientNumber,:patientLastName,:patientFirstName,:phone,:city,:streetname,:country)</sql>
-      <param name="patientNumber" sqlType="INTEGER"/>
-      <param name="patientLastName" sqlType="STRING"/>
-      <param name="patientFirstName" sqlType="STRING"/>
+   <query id="registerPatientQuery" useConfig="healthdatasource">
+      <sql>insert into patient (number, last_name, first_name, phone, city, street, country) values(:number,:last_name,:first_name,:phone,:city,:street,:country)</sql>
+      <param name="number" sqlType="INTEGER"/>
+      <param name="last_name" sqlType="STRING"/>
+      <param name="first_name" sqlType="STRING"/>
       <param name="phone" sqlType="STRING"/>
       <param name="city" sqlType="STRING"/>
-      <param name="streetname" sqlType="STRING"/>
+      <param name="street" sqlType="STRING"/>
       <param name="country" sqlType="STRING"/>
    </query>
-   <query id="patientDetailsByNumberSQL" useConfig="HealthDataSource">
-      <sql>select * from patient where patientNumber = ?</sql>
+   <query id="patientDetailsByNumberSQL" useConfig="healthdatasource">
+      <sql>select * from patient where number = ?</sql>
       <result element="patients" rowName="patient">
-         <element column="patientLastName" name="patient-last-name" xsdType="string"/>
-         <element column="patientFirstName" name="patient-first-name" xsdType="string"/>
+         <element column="last_name" name="patient-last-name" xsdType="string"/>
+         <element column="first_name" name="patient-first-name" xsdType="string"/>
          <element column="phone" name="phone" xsdType="string"/>
          <element column="city" name="city" xsdType="string"/>
-         <element column="streetname" name="streetname" xsdType="string"/>
+         <element column="street" name="street" xsdType="string"/>
          <element column="country" name="country" xsdType="string"/>
       </result>
-      <param name="patientNumber" sqlType="INTEGER"/>
+      <param name="number" sqlType="INTEGER"/>
    </query>
    <operation name="registerPatient" returnRequestStatus="true">
       <call-query href="registerPatientQuery">
-         <with-param name="patientNumber" query-param="patientNumber"/>
-         <with-param name="patientLastName" query-param="patientLastName"/>
-         <with-param name="patientFirstName" query-param="patientFirstName"/>
+         <with-param name="number" query-param="number"/>
+         <with-param name="last_name" query-param="last_name"/>
+         <with-param name="first_name" query-param="first_name"/>
          <with-param name="phone" query-param="phone"/>
          <with-param name="city" query-param="city"/>
-         <with-param name="streetname" query-param="streetname"/>
+         <with-param name="street" query-param="street"/>
          <with-param name="country" query-param="country"/>
       </call-query>
    </operation>
    <operation name="patientDetailsByNumber">
       <call-query href="patientDetailsByNumberSQL">
-         <with-param name="patientNumber" query-param="patientNumber"/>
+         <with-param name="number" query-param="number"/>
       </call-query>
    </operation>
 </data>
