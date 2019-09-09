@@ -31,13 +31,14 @@
 <div style="font-family:verdana;padding:20px;border-radius:100px;border:50px solid #EE872A;">
     <div style="opacity:0.3;position:absolute;right:120px;width:400px;height:600px;background-color:#8AC007;"></div>
 <table>
+    <c:if test="${!empty requestScope.patientList}">
     <tbody>
 
     <tr>
         <td></td>
         <td></td>
         <td><h3>Patients having ID 
-            <c:out value=" ${requestScope.patientNumber}"/>
+            <c:out value=" ${requestScope.number}"/>
             </h3>
         </td>
     </tr>
@@ -58,10 +59,10 @@
 		</tr>
 		<c:forEach items="${requestScope.patientList}" var="patientListVar">
 		<tr>
-			<td class= "a"><c:out value="${patientListVar.patientFirstName}"></c:out></td>
-			<td class= "a"><c:out value="${patientListVar.patientLastName}"></c:out></td>
+			<td class= "a"><c:out value="${patientListVar.firstName}"></c:out></td>
+			<td class= "a"><c:out value="${patientListVar.lastName}"></c:out></td>
 			<td class= "a"><c:out value="${patientListVar.phone}"></c:out></td>
-			<td class= "a"><c:out value="${patientListVar.streetname}"></c:out></td>
+			<td class= "a"><c:out value="${patientListVar.street}"></c:out></td>
 			<td class= "a"><c:out value="${patientListVar.city}"></c:out></td>
 			<td class= "a"><c:out value="${patientListVar.country}"></c:out></td>
 		</tr>
@@ -90,6 +91,7 @@
         </td>
     </tr>
     </tbody>
+    </c:if>
 </table>
 </div>
 </body>

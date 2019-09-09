@@ -56,9 +56,7 @@ public class RegisterPatientServlet extends HttpServlet{
         return registerPatientQuery;
     }
 
-    public void doGet(HttpServletRequest request,
-                       HttpServletResponse response)
-            throws ServletException, IOException {
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         // Set response content type
         response.setContentType("text/html");
@@ -108,7 +106,6 @@ public class RegisterPatientServlet extends HttpServlet{
             String country = request.getParameter("country");
 
             OMElement payload = createPayload(patientNumber,patientLastName,patientFirstName,phone,city,street,country);
-            OMElement result=null;
             ServiceClient serviceclient;
 
             ConfigurationContext cc = null;

@@ -22,6 +22,7 @@
       <param name="street" sqlType="STRING"/>
       <param name="country" sqlType="STRING"/>
    </query>
+
    <query id="patientDetailsByNumberSQL" useConfig="healthdatasource">
       <sql>select * from patient where number = ?</sql>
       <result element="patients" rowName="patient">
@@ -34,6 +35,34 @@
       </result>
       <param name="number" sqlType="INTEGER"/>
    </query>
+
+   <query id="patientListAllSQL" useConfig="healthdatasource">
+      <sql>select * from patient</sql>
+      <result element="patients" rowName="patient">
+         <element column="last_name" name="patient-last-name" xsdType="string"/>
+         <element column="first_name" name="patient-first-name" xsdType="string"/>
+         <element column="phone" name="phone" xsdType="string"/>
+         <element column="city" name="city" xsdType="string"/>
+         <element column="street" name="street" xsdType="string"/>
+         <element column="country" name="country" xsdType="string"/>
+      </result>
+   </query>
+
+
+   <query id="patientListPaginableSQL" useConfig="healthdatasource">
+      <sql>select * from patient LIMIT ?,?</sql>
+      <result element="patients" rowName="patient">
+         <element column="last_name" name="patient-last-name" xsdType="string"/>
+         <element column="first_name" name="patient-first-name" xsdType="string"/>
+         <element column="phone" name="phone" xsdType="string"/>
+         <element column="city" name="city" xsdType="string"/>
+         <element column="street" name="street" xsdType="string"/>
+         <element column="country" name="country" xsdType="string"/>
+      </result>
+      <param name="limit" sqlType="INTEGER"/>
+      <param name="offset" sqlType="INTEGER"/>
+   </query>
+
    <operation name="registerPatient" returnRequestStatus="true">
       <call-query href="registerPatientQuery">
          <with-param name="number" query-param="number"/>
@@ -45,9 +74,22 @@
          <with-param name="country" query-param="country"/>
       </call-query>
    </operation>
+
    <operation name="patientDetailsByNumber">
       <call-query href="patientDetailsByNumberSQL">
          <with-param name="number" query-param="number"/>
       </call-query>
    </operation>
+
+   <operation name="patientListAll">
+      <call-query href="patientListAllSQL"/>
+   </operation>
+
+   <operation name="patientListPaginable">
+      <call-query href="patientListPaginableSQL">
+         <with-param name="limit" query-param="number"/>
+         <with-param name="offset" query-param="offset"/>
+      </call-query>
+   </operation>
+
 </data>
