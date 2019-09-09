@@ -27,7 +27,7 @@ import java.util.List;
 public class QueryPatientDetailServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
-	private String ENDPOINT_SERVICES_WSO2DSS = "http://172.19.0.2:9763/services/wso2health/";
+	private String ENDPOINT_SERVICES_WSO2DSS = "http://localhost:9763/services/wso2health/";
 	private String nameSpaceURL = "http://ws.wso2.org/dataservice/samples/health";
 
 	final static Logger LOGGER = Logger.getLogger(QueryPatientDetailServlet.class);

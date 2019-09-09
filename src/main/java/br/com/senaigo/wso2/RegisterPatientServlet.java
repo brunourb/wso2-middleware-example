@@ -21,7 +21,7 @@ import java.io.PrintWriter;
 public class RegisterPatientServlet extends HttpServlet{
 
 	private static final long serialVersionUID = 1L;
-	private String DSSServerURL = "http://172.19.0.2:9763/services/wso2health/";
+	private String DSSServerURL = "http://localhost:9763/services/wso2health/";
 	private static String nameSpaceURL = "http://ws.wso2.org/dataservice/samples/health";
 	
 	public static OMElement createPayload(String patientNumber, String patientLastName, String patientFirstName, String phone, String city, String street, String country){

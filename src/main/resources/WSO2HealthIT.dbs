@@ -1,19 +1,19 @@
 <data name="wso2health" serviceNamespace="http://ws.wso2.org/dataservice/samples/health">
    <config id="healthdatasource">
 
-      <property name="driverClassName">com.mysql.jdbc.Driver</property>
-      <property name="url">jdbc:mysql://172.19.0.1:9306/medicaldb?autoReconnect=true&amp;useSSL=false</property>
-      <property name="username">root</property>
-      <property name="password">wso2</property>
+<!--      <property name="driverClassName">com.mysql.jdbc.Driver</property>-->
+<!--      <property name="url">jdbc:mysql://172.19.0.1:9306/medicaldb?autoReconnect=true&amp;useSSL=false</property>-->
+<!--      <property name="username">root</property>-->
+<!--      <property name="password">wso2</property>-->
 
-      <!--property name="driverClassName">org.h2.Driver</property>
-      <property name="url">jdbc:h2:mem:patientdb;DB_CLOSE_DELAY=- 1;DB_CLOSE_ON_EXIT=FALSE</property>
+      <property name="driverClassName">org.h2.Driver</property>
+      <property name="url">jdbc:h2:tcp://localhost/~/registryDB;create=true</property>
       <property name="username">sa</property>
-      <property name="password"></property-->
+      <property name="password"></property>
 
    </config>
    <query id="registerPatientQuery" useConfig="healthdatasource">
-      <sql>insert into patient (number, last_name, first_name, phone, city, street, country) values(:number,:last_name,:first_name,:phone,:city,:street,:country)</sql>
+      <sql>insert into patient (number, lastname, firstname, phone, city, street, country) values(:number,:last_name,:first_name,:phone,:city,:street,:country)</sql>
       <param name="number" sqlType="INTEGER"/>
       <param name="last_name" sqlType="STRING"/>
       <param name="first_name" sqlType="STRING"/>
@@ -26,8 +26,8 @@
    <query id="patientDetailsByNumberSQL" useConfig="healthdatasource">
       <sql>select * from patient where number = ?</sql>
       <result element="patients" rowName="patient">
-         <element column="last_name" name="patient-last-name" xsdType="string"/>
-         <element column="first_name" name="patient-first-name" xsdType="string"/>
+         <element column="lastname" name="patient-last-name" xsdType="string"/>
+         <element column="firstname" name="patient-first-name" xsdType="string"/>
          <element column="phone" name="phone" xsdType="string"/>
          <element column="city" name="city" xsdType="string"/>
          <element column="street" name="street" xsdType="string"/>
@@ -39,8 +39,8 @@
    <query id="patientListAllSQL" useConfig="healthdatasource">
       <sql>select * from patient</sql>
       <result element="patients" rowName="patient">
-         <element column="last_name" name="patient-last-name" xsdType="string"/>
-         <element column="first_name" name="patient-first-name" xsdType="string"/>
+         <element column="lastname" name="patient-last-name" xsdType="string"/>
+         <element column="firstname" name="patient-first-name" xsdType="string"/>
          <element column="phone" name="phone" xsdType="string"/>
          <element column="city" name="city" xsdType="string"/>
          <element column="street" name="street" xsdType="string"/>
@@ -52,8 +52,8 @@
    <query id="patientListPaginableSQL" useConfig="healthdatasource">
       <sql>select * from patient LIMIT ?,?</sql>
       <result element="patients" rowName="patient">
-         <element column="last_name" name="patient-last-name" xsdType="string"/>
-         <element column="first_name" name="patient-first-name" xsdType="string"/>
+         <element column="lastname" name="patient-last-name" xsdType="string"/>
+         <element column="firstname" name="patient-first-name" xsdType="string"/>
          <element column="phone" name="phone" xsdType="string"/>
          <element column="city" name="city" xsdType="string"/>
          <element column="street" name="street" xsdType="string"/>
